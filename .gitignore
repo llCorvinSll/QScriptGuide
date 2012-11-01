@@ -10,3 +10,6 @@
 *.lai
 *.la
 *.a
+
+#user files for Qt
+*.pro.user
