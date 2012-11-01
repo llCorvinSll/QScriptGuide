@@ -9,6 +9,8 @@ include(../QScriptGuide.pri)
 TARGET = QtScriptDemo
 TEMPLATE = app
 
+INCLUDEPATH += ../ScriptLoadHelpers
+LIBS += -L../ -lScriptLoadHelpers
 
 SOURCES += main.cpp\
     src/invoker.cpp

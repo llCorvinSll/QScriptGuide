@@ -5,6 +5,8 @@
 #include <QtScript>
 #include <QtUiTools>
 
+#include<seinvoker.h>
+
 
 #include <QMainWindow>
 #ifndef QT_NO_SCRIPTTOOLS
@@ -29,14 +31,19 @@ int main(int argc, char *argv[])
     debugWindow->resize(1024, 640);
 #endif
 
+    SEInvoker::i().init();
+
     QString s;    
     s = ":/js/script.js";
-    Invoker::i().invoke(s);
+    //Invoker::i().invoke(s);
+    SEInvoker::i().loadFromFile(s);
     s = ":/ui/form.ui";
     QWidget *ui = Invoker::i().loadUi(s);
-    QScriptValue ctor = Invoker::i().getEngine().evaluate("ExampleThisUi");
+    //QScriptValue ctor = Invoker::i().getEngine().evaluate("ExampleThisUi");
+    QScriptValue ctor = SEInvoker::i().getSE().evaluate("ExampleThisUi");
     QScriptValue scriptUi =
-            Invoker::i().getEngine().newQObject(ui, QScriptEngine::ScriptOwnership);
+          //  Invoker::i().getEngine().newQObject(ui, QScriptEngine::ScriptOwnership);
+            SEInvoker::i().getSE().newQObject(ui, QScriptEngine::ScriptOwnership);
     QScriptValue tut = ctor.construct(QScriptValueList() << scriptUi);
 
     ui->show();
