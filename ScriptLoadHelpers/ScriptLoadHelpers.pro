@@ -3,8 +3,7 @@
 # Project created by QtCreator 2012-11-02T00:13:33
 #
 #-------------------------------------------------
-
-QT       += script
+include(../QScriptGuide.pri)
 
 QT       -= gui
 
@@ -15,10 +14,7 @@ CONFIG += debug_and_release build_all
 
 DEFINES += SCRIPTLOADHELPERS_LIBRARY
 
-SOURCES += scriptenginesingle.cpp
-
-HEADERS += scriptenginesingle.h\
-        ScriptLoadHelpers_global.h
+HEADERS += ScriptLoadHelpers_global.h
 
 unix:!symbian {
     maemo5 {
@@ -34,3 +30,9 @@ HEADERS += \
 
 SOURCES += \
     seinvoker.cpp
+
+HEADERS += \
+    uildinvoker.h
+
+SOURCES += \
+    uildinvoker.cpp

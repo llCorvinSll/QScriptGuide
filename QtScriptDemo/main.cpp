@@ -1,13 +1,10 @@
 #include <QApplication>
 
-#include "src/invoker.h"
 #include <QWidget>
 #include <QtScript>
 #include <QtUiTools>
-
 #include<seinvoker.h>
-
-
+#include<uildinvoker.h>
 #include <QMainWindow>
 #ifndef QT_NO_SCRIPTTOOLS
 #include <QScriptEngineDebugger>
@@ -17,8 +14,13 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    qDebug() << "a is done ";
+
     Q_INIT_RESOURCE(resource);
 
+
+    SEInvoker::i().init(new QScriptEngine());
+    UiLdInvoker::i().init();
 /*
  *если есть возможность для отладки (QSCRIPTTOOLS)
  *создаем дебаггер для отладки, прикрепляем его к нашему движку
@@ -26,23 +28,17 @@ int main(int argc, char *argv[])
 */
 #if !defined(QT_NO_SCRIPTTOOLS)
     QScriptEngineDebugger debugger;
-    debugger.attachTo(&Invoker::i().getEngine());
+    debugger.attachTo(&SEInvoker::i().getSE());
     QMainWindow *debugWindow = debugger.standardWindow();
     debugWindow->resize(1024, 640);
 #endif
-
-    SEInvoker::i().init();
-
     QString s;    
     s = ":/js/script.js";
-    //Invoker::i().invoke(s);
     SEInvoker::i().loadFromFile(s);
     s = ":/ui/form.ui";
-    QWidget *ui = Invoker::i().loadUi(s);
-    //QScriptValue ctor = Invoker::i().getEngine().evaluate("ExampleThisUi");
+    QWidget *ui = UiLdInvoker::i().LoadUi(s);
     QScriptValue ctor = SEInvoker::i().getSE().evaluate("ExampleThisUi");
     QScriptValue scriptUi =
-          //  Invoker::i().getEngine().newQObject(ui, QScriptEngine::ScriptOwnership);
             SEInvoker::i().getSE().newQObject(ui, QScriptEngine::ScriptOwnership);
     QScriptValue tut = ctor.construct(QScriptValueList() << scriptUi);
 

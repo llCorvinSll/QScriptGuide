@@ -13,10 +13,6 @@ INCLUDEPATH += ../ScriptLoadHelpers
 LIBS += -L../ -lScriptLoadHelpers
 
 SOURCES += main.cpp\
-    src/invoker.cpp
-
-HEADERS  += \
-    src/invoker.h
 
 FORMS    += \
     ui/form.ui
@@ -26,9 +22,3 @@ RESOURCES += \
 
 OTHER_FILES += \
     js/script.js
-
-HEADERS += \
-    src/uildinvoker.h
-
-SOURCES += \
-    src/uildinvoker.cpp

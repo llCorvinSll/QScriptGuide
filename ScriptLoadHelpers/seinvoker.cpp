@@ -2,11 +2,13 @@
 #include<QScriptEngine>
 #include<QFile>
 #include<QDebug>
+#include <QtCore/QCoreApplication>
 
 QScriptEngine *SEInvoker::_engine = NULL;
 
 SEInvoker::SEInvoker(QObject *parent)
 {
+    Q_UNUSED(parent)
 }
 
 
@@ -15,10 +17,9 @@ SEInvoker::~SEInvoker()
     this->wipeOf();
 }
 
-void SEInvoker::init()
+void SEInvoker::init(QScriptEngine *e)
 {
-    if (_engine == NULL)
-        _engine = new QScriptEngine();
+    _engine = e;
 }
 
 const SEInvoker &SEInvoker::i()

@@ -19,7 +19,7 @@ private:
 public:
     ~SEInvoker();
 
-    static void init();
+    static void init(QScriptEngine *e);
     static const SEInvoker& i();
     static void wipeOf();
     static bool loadFromFile(QString fileName);
