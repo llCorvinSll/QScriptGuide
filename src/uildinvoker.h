@@ -1,12 +1,13 @@
 #ifndef UILDINVOKER_H
 #define UILDINVOKER_H
 
-#include "ScriptLoadHelpers_global.h"
+
 
 class QUiLoader;
 class QWidget;
+class QString;
 
-class SCRIPTLOADHELPERSSHARED_EXPORT UiLdInvoker
+class UiLdInvoker
 {
 private:
     UiLdInvoker();

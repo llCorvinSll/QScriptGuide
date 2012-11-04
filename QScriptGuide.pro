@@ -8,4 +8,7 @@ SUBDIRS += \
 SUBDIRS += \
     QtScriptDemo\
 
+SUBDIRS += \
+    QScriptUiProto
+
 

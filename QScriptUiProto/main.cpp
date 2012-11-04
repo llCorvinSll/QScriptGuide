@@ -3,8 +3,8 @@
 #include <QWidget>
 #include <QtScript>
 #include <QtUiTools>
-#include<seinvoker.h>
-#include<uildinvoker.h>
+#include "../src/seinvoker.h"
+#include "../src/uildinvoker.h"
 #include <QMainWindow>
 #ifndef QT_NO_SCRIPTTOOLS
 #include <QScriptEngineDebugger>
@@ -31,12 +31,8 @@ int main(int argc, char *argv[])
     QMainWindow *debugWindow = debugger.standardWindow();
     debugWindow->resize(1024, 640);
 #endif
-    QFile f;
-    f.setFileName(":/js/script.js");
 
-    SEInvoker::i().loadFromFile(f);
-
-//    SEInvoker::i().loadFromFile(":/js/script.js");
+    SEInvoker::i().loadFromFile(":/js/script.js");
 
     QWidget *ui = UiLdInvoker::i().LoadUi(":/ui/form.ui");
     QScriptValue ctor = SEInvoker::i().getSE().evaluate("ExampleThisUi");

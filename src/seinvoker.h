@@ -4,9 +4,8 @@
 #include<QScriptEngine>
 #include<QFile>
 #include<QDebug>
-#include "ScriptLoadHelpers_global.h"
 
-class SCRIPTLOADHELPERSSHARED_EXPORT SEInvoker
+class  SEInvoker
 {
 private:
     SEInvoker();
@@ -20,7 +19,6 @@ public:
     static void init(QScriptEngine *e);
     static const SEInvoker& i();
     static void wipeOf();
-    static bool loadFromFile(QFile& scriptFile);
     static bool loadFromFile(QString fileName);
     static QScriptEngine &getSE();
 };

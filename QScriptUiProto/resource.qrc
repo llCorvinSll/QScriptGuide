@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>js/script.js</file>
+        <file>ui/form.ui</file>
+    </qresource>
+</RCC>
